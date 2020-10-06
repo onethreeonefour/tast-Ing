@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import { API_ID, API_KEY } from '../../Config'
+import React, { useState } from 'react'
 import Search from '../Search/Search'
-
 import Meat from '../FoodSelection/Meat'
 import Vegan from '../FoodSelection/Vegan'
 import ChefTextBox from '../Chef/TextBox'
+import Chef from '../Chef/Chef'
+import { withRouter } from 'react-router-dom';
 
+function Landing(props) {
+    const [Diet, setDiet] = useState("alcohol-free")
+    const [ChefComment, setChefComment] = useState("Let Chef Michele guide you. Click on a picture to start with the most popular ingredient or simply type something.")
+    const [Query, setQuery] = useState("")
 
-
-function Landing() {
-    const [Diet, setDiet] = useState()
-    const [ChefComment, setChefComment] = useState("Whaddaya feel like eating today? You can ask me, click on the pictures or I can just give you a random dish!")
-
-    useEffect(() => {
-        /*fetch(`https://api.edamam.com/search?q=chicken&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`)
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-            })*/
-
-    }, [])
 
     const onChangeDiet = (e) => {
         setDiet(e.target.value)
+        if (e.target.value === "Vegan") {
+            setDiet("vegan");
+            setQuery("");
+        } else {
+            setDiet("alcohol-free");
+            setQuery("");
+        }
+
         setChefComment(`Perhaps a ${e.target.value} diet today...`)
     }
 
@@ -30,22 +29,36 @@ function Landing() {
         setChefComment(value)
     }
 
+    const onChangeQuery = (value) => {
+        setQuery(value);
+    }
+    //Change query from 0 to 3 to some random value to a maximum of 3-5 - maybe in a carousel?
+    const searchQuery = () => {
+        props.history.push(`/search/${Query}/${Diet}`);
+    }
+
     return (
         <div>
             <div className="flex-container flex-center">
                 <div className="message-box" style={{ textAlign: 'center' }}>
                     <h1>Popular Ingredients</h1>
-                    {Diet === "Meat" ?
-                        <Meat
-                            onChangeComment={onChangeComment}
-                        />
-                        :
+                    {Diet === "vegan" ?
                         <Vegan
                             onChangeComment={onChangeComment}
+                            onChangeQuery={onChangeQuery}
+                        />
+                        :
+                        <Meat
+                            onChangeComment={onChangeComment}
+                            onChangeQuery={onChangeQuery}
                         />
                     }
                     <Search
+                        query={onChangeQuery}
+                        landingQuery={Query}
                     />
+                    <button onClick={searchQuery} className="show-me-button-landing">Search!</button>
+                    <br />
                     <br />
                     <div onChange={onChangeDiet}>
                         <input type="radio" value="Meat" name="diet-selection" /> Meat
@@ -53,13 +66,14 @@ function Landing() {
                     </div>
                 </div>
             </div>
+            <br/>
+            <Chef/>
             <ChefTextBox
                 comment={ChefComment}
-                buttonValue={Diet}
             />
         </div>
 
     )
 }
 
-export default Landing
+export default withRouter(Landing)

@@ -11,7 +11,7 @@ export const ChefComments = [
         comment: 'I\'m impressed by your taste.'
     },
     {
-        comment: 'Chef Mike applauds your decision!'
+        comment: 'Chef Michele applauds your decision!'
     },
     {
         comment: 'Nothing but the best for you!'
@@ -21,6 +21,15 @@ export const ChefComments = [
     },
     {
         comment: 'Superb.'
+    },
+    {
+        comment: 'Tonight will be a feast worthy of Kings.'
+    },
+    {
+        comment: 'Chef Michele will only deliver the best to you.'
+    },
+    {
+        comment: 'At this rate you probably won\'t need my excellent teaching anymore.'
     },
 
 ];
