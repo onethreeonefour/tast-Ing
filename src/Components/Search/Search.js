@@ -11,11 +11,9 @@ function Search(props) {
 
     return (
         <div>
-
-            <input type="text" placeholder="I feel like..." className="search" onChange={onChangeSearch} value={props.landingQuery}></input>
+            <input type="text" placeholder="I feel like..." className="search" onChange={onChangeSearch} ></input>
             <br />
-            <br />
-           
+            <br />     
         </div>
     )
 }
