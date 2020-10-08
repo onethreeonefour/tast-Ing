@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Landing from './Components/Landing/Landing';
 import RecipePage from './Components/Recipe/RecipePage'
 import SearchPageResult from './Components/SearchResult/SearchResultPage'
+import Footer from './Components/Footer/Footer'
 
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/recipe/:recipe_uri" component={RecipePage} />
         </Switch>
       </div>
+      <Footer/>
     </Suspense>
   );
 }

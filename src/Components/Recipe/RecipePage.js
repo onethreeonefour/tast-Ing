@@ -17,7 +17,7 @@ function RecipePage(props) {
     return (
         <div >
             {Recipe.hasOwnProperty("url") ?
-                <div className="grid-container col-two card-background width-85 recipe-container" style={{ margin: "auto" }}>
+                <div className="grid-container col-two card-background width-85 recipe-container" style={{ margin: "auto", gap: "2rem" }}>
                     <div>
                         <img src={Recipe.image} alt="recipe-image"></img>
                         <h3>{Recipe.label}</h3>

@@ -1,31 +1,26 @@
 import React, { useState } from 'react'
 import Search from '../Search/Search'
-import Chef from '../Chef/Chef'
-import { withRouter } from 'react-router-dom';
+import Logo from '../../Images/logo.png'
 
-function Landing(props) {
+function Landing() {
 
     const [Query, setQuery] = useState("")
 
     const onChangeQuery = (value) => {
         setQuery(value);
     }
-    //Change query from 0 to 3 to some random value to a maximum of 3-5 - maybe in a carousel?
-    const searchQuery = () => {
-        props.history.push(`/search/${Query}`);
-    }
-    console.log(Query)
+
     return (
         <div>
             <div className="flex-container flex-center">
-                <div className="message-box" style={{ textAlign: 'center' }}>
-                    <h1>Feeling Hungry? Get some recipes right here!</h1>
+                <div className="landing-splash" style={{ textAlign: 'center' }}>
+                    <h1 className="landing-title">Tast.Ing</h1>
+                    <h4 className="landing-subtitle">Find Recipes Across The Globe</h4>
+                    <img src={Logo} alt="tast.ing"></img>
                     <Search
                         query={onChangeQuery}
                         landingQuery={Query}
                     />
-                    <button onClick={searchQuery} className="show-me-button-landing">Search!</button>
-                    <Chef/>
                 </div>
             </div>
         </div>
@@ -33,4 +28,4 @@ function Landing(props) {
     )
 }
 
-export default withRouter(Landing)
+export default Landing

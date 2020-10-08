@@ -5,9 +5,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Lato', sans-serif;
 }
-hr{
-  border:0.5px solid #3838382c;
+
+hr {
+  border: 0.5px solid #3838382c;
 }
+
 a {
   text-decoration: none;
   color: #444444
@@ -25,17 +27,16 @@ code {
   font-weight: bold;
 }
 
-.subtle{
+.subtle {
   color: #aaa;
 }
-
 
 .light {
   font-weight: lighter;
 }
 
 .background {
-  background-color: rgba(235, 235, 235, 0.774);
+  background-color: rgba(235, 235, 235, 0.897);
 }
 
 .loading-container {
@@ -102,6 +103,9 @@ code {
   grid-template-columns: repeat(2, 1fr);
   padding: 2rem;
   gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  height: 375px;
 }
 
 .card-number {
@@ -115,29 +119,25 @@ code {
   width: 25px;
 }
 
-.recipe-container{
-  padding:2rem;
- 
+.recipe-container {
+  padding: 2rem;
 }
 
 .card-background {
   background-color: white;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.178);
-  text-align: center;
 }
 
 .card-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem;
-  font-weight: lighter;
+  font-size: 3rem;
+  font-weight: 500;
   line-height: 50px;
+  color: rgb(17, 17, 17);
   margin: 10px 0;
 }
 
 .recipe-card-image {
-  max-width: 100%;
-  margin: auto;
-  height: auto;
   background-position: center;
   background-size: cover;
   border-radius: 0.25rem;
@@ -150,7 +150,7 @@ code {
   border: 3px solid black;
   margin: 1rem;
   font-size: 1.5rem;
-  box-shadow: 0 4px rgba(0, 0, 0, 0.384);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.384);
   transition: .5s;
   cursor: pointer;
 }
@@ -160,69 +160,89 @@ code {
   background-color: rgb(83, 83, 83);
 }
 
-.show-me-button-landing {
-  padding: 1rem;
-  color: rgb(80, 141, 255);
-  background-color: transparent;
-  margin: 1rem;
-  font-size: 1.5rem;
-  box-shadow: 0 2px rgba(0, 0, 0, 0.384);
-  transition: .5s;
-  cursor: pointer;
-}
-
-.show-me-button-landing:hover {
-  color: white;
-  background-color: rgb(80, 141, 255);
-}
-
 .search {
   border: 0;
   padding: 1rem;
   font-size: 2rem;
   border-bottom: 2px solid black;
+  width:300px;
 }
 
 .search:focus {
   border: 0;
 }
 
-.message-box {
-  border-radius: 0.5rem;
-  height: 65vh;
-  width: 90vw;
-  background-color: white;
-  box-shadow: 0.5px 4px 10px rgba(0, 0, 0, 0.425);
+.search-col {
+  grid-template-columns: repeat(2, 1fr);
 }
-.chef-image {
-  height: 200px;
-  max-width: 100%;
+
+.card-grid-image {
+  text-align: right;
+}
+.landing-title{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.landing-subtitle{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem;
+}
+
+.website-link{
+  color:white;
   transition: .4s;
 }
-
-.chef-image:hover {
-  transform: translateY(-20px);
+.website-link:hover{
+  background-color: blanchedalmond;
+  color:black;
+  
 }
 
-.chef-text-box {
-  right: 250px;
-  width: 500px;
-  position: absolute;
-  background-color: white;
-  height: 175px;
-  border: 10px double black;
-  padding: 1rem;
+@media only screen and (max-width: 1600px) {
+  .recipe-card-image {
+    height: 250px;
+  }
+  .card-title {
+    font-size: 2.75rem;
+  }
 }
 
-.food-showcase {
-  max-width: auto;
-  height: 150px;
-  padding: 1rem;
-  transition: .4s;
-  border-radius: 1rem;
-  cursor: pointer;
+@media only screen and (max-width: 1300px) {
+  .recipe-card-image {
+    height: 225px;
+  }
+  .card-grid {
+    height: 475px;
+  }
 }
 
-.food-showcase:hover {
-  transform: translateY(-15px)
+@media only screen and (max-width: 1100px) {
+  .search-col {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .card-grid {
+    height: 375px;
+  }
+  .col-two{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .landing-subtitle{
+    font-size: 1rem;
+  }
+  .search{
+    width:275px;
+  }
+  .card-grid {
+    height:auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .card-grid-image {
+    text-align: center;
+  }
+
 }

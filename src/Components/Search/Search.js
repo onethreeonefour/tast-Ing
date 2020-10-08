@@ -1,21 +1,27 @@
 import React, { useState } from 'react'
-
+import { withRouter } from 'react-router-dom';
 function Search(props) {
 
     const [Query, setQuery] = useState("")
 
     const onChangeSearch = (e) => {
         setQuery(e.currentTarget.value)
-        props.query(Query)
+    }
+
+    const searchQuery = () => {
+        props.history.push(`/search/${Query}`);
     }
 
     return (
         <div>
-            <input type="text" placeholder="I feel like..." className="search" onChange={onChangeSearch} ></input>
-            <br />
-            <br />     
+            <form onSubmit={searchQuery}>
+                <input type="text" placeholder="I feel like..." className="search" onChange={onChangeSearch} required></input>
+                <br/>
+                <br/>
+                <button className="show-me-button">Search</button>
+            </form>
         </div>
     )
 }
 
-export default Search
+export default withRouter(Search)

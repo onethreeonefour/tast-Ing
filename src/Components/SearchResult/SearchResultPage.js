@@ -16,22 +16,22 @@ function SearchResultPage(props) {
             })
     }, [])
 
-    console.log(Recipe)
     const renderCards = Recipe.slice(StartPoint, EndArray).map((recipe, index) => {
         return <a href={`/recipe/${recipe.recipe.uri.slice(44)}`} key={index} className="card-background">
             <div className="card-grid align-left">
                 <div>
                     <p className="card-number subtle">{index + 1}</p>
                     <p className="light subtle">{recipe.recipe.source}</p>
-                    <h3 className="card-title">{recipe.recipe.label}</h3>
+                    {recipe.recipe.label.length > 35 ? <h3 className="card-title">{recipe.recipe.label.slice(0,25)}..</h3> : <h3 className="card-title">{recipe.recipe.label}</h3>}
+
                     <div className="grid-container col-two">
-                        <h4 className="light">Serving Size <span className="light">{recipe.recipe.yield}</span></h4>
-                        <h4 className="light">Calories  <span className="light">{Math.round(recipe.recipe.calories)}</span></h4>
+                        <p className="light">Serving Size <span className="light">{recipe.recipe.yield}</span></p>
+                        <p className="light">Calories  <span className="light">{Math.round(recipe.recipe.calories)}</span></p>
                     </div>
-                    <hr/>
-                    <p className="light subtle" style={{ textAlign: "right", fontSize:"0.75rem" }}>{recipe.recipe.healthLabels[0]}</p>
+                    <hr />
+                    <p className="light subtle" style={{ textAlign: "right", fontSize: "0.75rem" }}>{recipe.recipe.healthLabels[0]}</p>
                 </div>
-                <div>
+                <div className="card-grid-image">
                     <div className="image-background" >
                         <img src={recipe.recipe.image} alt="food-image" className="recipe-card-image"></img>
                     </div>
@@ -52,7 +52,7 @@ function SearchResultPage(props) {
         <div>
             {Recipe.length > 0 ?
                 <div style={{ textAlign: 'center' }}>
-                    <div className='grid-container col-two flex-center width-85' style={{ margin: "auto", gap: '1rem' }}>
+                    <div className='grid-container search-col flex-center width-85' style={{ margin: "auto", gap: '1rem' }}>
                         {renderCards}
                     </div>
                     <button onClick={handleShowMore} className="show-me-button">Show Me More!</button>
