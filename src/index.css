@@ -50,6 +50,7 @@ code {
 
 .flex-container {
   display: flex;
+  height:100vh;
 }
 
 .grid-container {
@@ -185,6 +186,10 @@ code {
   font-weight: 600;
 }
 
+.splash-logo{
+  height:150px;
+  
+}
 .landing-subtitle{
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.75rem;

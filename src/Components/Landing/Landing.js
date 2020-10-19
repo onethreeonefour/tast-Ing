@@ -11,19 +11,19 @@ function Landing() {
     }
 
     return (
-        <div>
-            <div className="flex-container flex-center">
-                <div className="landing-splash" style={{ textAlign: 'center' }}>
-                    <h1 className="landing-title">Tast.Ing</h1>
-                    <h4 className="landing-subtitle">Find Recipes Across The Globe</h4>
-                    <img src={Logo} alt="tast.ing"></img>
-                    <Search
-                        query={onChangeQuery}
-                        landingQuery={Query}
-                    />
-                </div>
+
+        <div className="flex-container flex-center">
+            <div className="landing-splash" style={{ textAlign: 'center' }}>
+                <h1 className="landing-title">Tast.Ing</h1>            
+                <h4 className="landing-subtitle">Find Recipes Across The Globe</h4>
+                <img src={Logo} alt="tast.ing" className="splash-logo"></img>
+                <Search
+                    query={onChangeQuery}
+                    landingQuery={Query}
+                />
             </div>
         </div>
+
 
     )
 }
